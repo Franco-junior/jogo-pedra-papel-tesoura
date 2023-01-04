@@ -16,7 +16,7 @@ while state != 2:
     if state == 1:
         state = init_screen(janela)
     if state == 3:
-        x = 0
+        state = game_screen(janela)
     else:
         state = 2
 

@@ -15,6 +15,18 @@ def init_screen (janela):
     while game:
         clock.tick(FPS)
         for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x = event.pos[0]
+                y = event.pos[1]
+                if botao1.collidepoint((x,y)):
+                    state = 3
+                    game = False
+                elif botao2.collidepoint((x,y)):
+                    state = 3
+                    game = False
+                elif botao3.collidepoint((x,y)):
+                    state = 3
+                    game = False
             if event.type == pygame.QUIT:
                 game = False
                 state = 2
@@ -32,12 +44,12 @@ def init_screen (janela):
             botao3 = pygame.draw.polygon(janela, cor, vertices3)
         
             #alterando posição dos textos
-            janela.blit(background, (190, 60))
+            #janela.blit(background, (190, 60))
             janela.blit(mode, (190, 250))
             janela.blit(text1, (82, 313))
             janela.blit(text2, (265, 314))
             janela.blit(text3, (440, 315))
-            background = pygame.transform.scale(background, (200, 160))
+            #background = pygame.transform.scale(background, (200, 160))
             pygame.display.flip()
     
     return state
