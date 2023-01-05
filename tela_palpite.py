@@ -45,10 +45,10 @@ def init_screen (janela):
         
             #alterando posição dos textos
             #janela.blit(background, (190, 60))
-            janela.blit(mode, (190, 250))
-            janela.blit(text1, (82, 313))
-            janela.blit(text2, (265, 314))
-            janela.blit(text3, (440, 315))
+            janela.blit(mode, (80, 150))
+            janela.blit(text1, (92, 313))
+            janela.blit(text2, (268, 314))
+            janela.blit(text3, (430, 315))
             #background = pygame.transform.scale(background, (200, 160))
             pygame.display.flip()
     
