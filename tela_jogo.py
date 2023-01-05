@@ -1,6 +1,6 @@
 import pygame
 import time
-from random import *
+import random
 
 LARGURA = 600
 ALTURA = 400
@@ -9,12 +9,12 @@ def game_screen(janela):
     clock = pygame.time.Clock()
     game = True
 
-    pedra = pygame.image.load('rock_round.png').convert_alpha()
-    pedra = pygame.transform.scale(pedra, (30,15))
-    papel = pygame.image.load('rock_round.png').convert_alpha()
-    papel = pygame.transform.scale(papel, (30,15))
-    tesoura = pygame.image.load('rock_round.png').convert_alpha()
-    tesoura = pygame.transform.scale(tesoura, (30,15))
+    pedra = pygame.image.load('Rock Pile.png').convert_alpha()
+    pedra = pygame.transform.scale(pedra, (60,30))
+    papel = pygame.image.load('scroll.png').convert_alpha()
+    papel = pygame.transform.scale(papel, (60,30))
+    tesoura = pygame.image.load('scissors_01.png').convert_alpha()
+    tesoura = pygame.transform.scale(tesoura, (60,30))
 
     class Pedra(pygame.sprite.Sprite):
         def __init__(self, img):
@@ -23,8 +23,8 @@ def game_screen(janela):
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = random.randint(0, LARGURA-30)
-            self.rect.y = random.randint(0, ALTURA-30)
+            self.rect.x = random.randint(0, LARGURA-40)
+            self.rect.y = random.randint(0, ALTURA-40)
     
     class Papel(pygame.sprite.Sprite):
         def __init__(self, img):
@@ -33,8 +33,8 @@ def game_screen(janela):
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = random.randint(0, LARGURA-30)
-            self.rect.y = random.randint(0, ALTURA-30)
+            self.rect.x = random.randint(0, LARGURA-40)
+            self.rect.y = random.randint(0, ALTURA-40)
 
     class Tesoura(pygame.sprite.Sprite):
         def __init__(self, img):
@@ -43,8 +43,8 @@ def game_screen(janela):
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = random.randint(0, LARGURA-30)
-            self.rect.y = random.randint(0, ALTURA-30)
+            self.rect.x = random.randint(0, LARGURA-40)
+            self.rect.y = random.randint(0, ALTURA-40)
 
     all_sprites = pygame.sprite.Group()
     all_pedra = pygame.sprite.Group()
@@ -61,3 +61,17 @@ def game_screen(janela):
     all_pedra.add(pedraa)
     all_papel.add(papell)
     all_tesoura.add(tesouraa)
+
+    while game:
+        clock.tick(FPS)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                game = False
+                time.sleep(2)
+        
+        janela.fill((8, 91, 7))
+
+        all_sprites.draw(janela)
+        pygame.display.update()
+    return 2
