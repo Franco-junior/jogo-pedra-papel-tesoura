@@ -10,11 +10,11 @@ def game_screen(janela):
     game = True
 
     pedra = pygame.image.load('Rock Pile.png').convert_alpha()
-    pedra = pygame.transform.scale(pedra, (60,30))
+    pedra = pygame.transform.scale(pedra, (30,30))
     papel = pygame.image.load('scroll.png').convert_alpha()
-    papel = pygame.transform.scale(papel, (60,30))
+    papel = pygame.transform.scale(papel, (30,30))
     tesoura = pygame.image.load('scissors_01.png').convert_alpha()
-    tesoura = pygame.transform.scale(tesoura, (60,30))
+    tesoura = pygame.transform.scale(tesoura, (30,30))
 
     class Pedra(pygame.sprite.Sprite):
         def __init__(self, img):
@@ -23,8 +23,17 @@ def game_screen(janela):
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = random.randint(0, LARGURA-40)
-            self.rect.y = random.randint(0, ALTURA-40)
+            self.rect.x = 200
+            self.rect.y = 300
+            #self.rect.x = random.randint(0, LARGURA-40)
+            #self.rect.y = random.randint(0, ALTURA-40)
+        
+        def update(self) :
+            hits = pygame.sprite.spritecollide(self, all_sprites, True, pygame.sprite.collide_rect_ratio(2.0))
+            print(hits)
+            if hits != []:
+                self.rect.x = random.randint(0, LARGURA-40)
+                self.rect.y = random.randint(0, ALTURA-40)
     
     class Papel(pygame.sprite.Sprite):
         def __init__(self, img):
@@ -33,8 +42,10 @@ def game_screen(janela):
 
             self.image = img
             self.rect = self.image.get_rect()
-            self.rect.x = random.randint(0, LARGURA-40)
-            self.rect.y = random.randint(0, ALTURA-40)
+            self.rect.x = 200
+            self.rect.y = 290
+            #self.rect.x = random.randint(0, LARGURA-40)
+            #self.rect.y = random.randint(0, ALTURA-40)
 
     class Tesoura(pygame.sprite.Sprite):
         def __init__(self, img):
